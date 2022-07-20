@@ -12,14 +12,8 @@ export default defineNuxtConfig({
         define: {
             'process.env.DEBUG': false,
         },
-        server: {
-            proxy: {
-                "/api": {
-                    target: "http://localhost:5000/",
-                    changeOrigin: true,
-                    toProxy: false,
-                }
-            }
-        }
     },
+    runtimeConfig: {
+        apiRoot: "http://localhost:5000"
+    }
 })

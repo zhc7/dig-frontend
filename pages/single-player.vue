@@ -70,6 +70,8 @@
 
 <script>
 
+const apiRoot = "";
+
 export default {
   name: "index",
   data() {
@@ -108,7 +110,7 @@ export default {
   methods: {
     postAction(actionId) {
       this.historyActions[this.historyActions.length - 1]["0"] = actionId;
-      $fetch("/api/action",
+      $fetch(apiRoot + "/api/action",
           {
             method: "POST",
             body: {
@@ -131,12 +133,10 @@ export default {
           this.availableActions = response["availableActions"];
         }
         this.historyActions.push({1: response["action"]});
-        console.log(this.players);
       })
     },
     register() {
-      console.log("registering");
-      $fetch("/api/register",
+      $fetch(apiRoot + "/api/register",
           {
             method: "POST",
           }).then(response => {
@@ -147,7 +147,7 @@ export default {
       })
     },
     refresh() {
-      $fetch("/api/refresh",
+      $fetch(apiRoot + "/api/refresh",
           {
             method: "POST"
           }).then(response => {
@@ -160,7 +160,6 @@ export default {
   },
   computed: {},
   mounted() {
-    console.log(this.actions);
     this.register();
   }
 }
