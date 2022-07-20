@@ -152,6 +152,7 @@ export default {
             method: "POST"
           }).then(response => {
         this.players = response["players"];
+        this.availableActions = ["j"];
         this.isWin = false;
         this.winner = "";
         this.historyActions = [{1: "j"}];
